@@ -1,4 +1,4 @@
-const CACHE_NAME = 'evjf-v1';
+const CACHE_NAME = 'evjf-v2';
 
 const PRECACHE_ASSETS = [
   '/EVJF/',
@@ -27,17 +27,33 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
-  if (url.origin === self.location.origin) {
+  if (url.origin !== self.location.origin) return;
+
+  // Navigation/HTML requests: always try the network first so deploys show
+  // up immediately, falling back to cache only when offline.
+  if (event.request.mode === 'navigate' || url.pathname.endsWith('.html')) {
     event.respondWith(
-      caches.match(event.request).then((cached) => {
-        if (cached) return cached;
-        return fetch(event.request).then((response) => {
-          if (!response || response.status !== 200) return response;
+      fetch(event.request)
+        .then((response) => {
           const clone = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
           return response;
-        });
-      })
+        })
+        .catch(() => caches.match(event.request))
     );
+    return;
   }
+
+  // Static assets: cache-first for speed, refreshed in the background.
+  event.respondWith(
+    caches.match(event.request).then((cached) => {
+      const network = fetch(event.request).then((response) => {
+        if (!response || response.status !== 200) return response;
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        return response;
+      });
+      return cached || network;
+    })
+  );
 });
