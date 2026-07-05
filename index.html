@@ -3,33 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EVJF</title>
+  <title>Le Grimoire d'Ulyssa</title>
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#e91e8c" />
+  <meta name="theme-color" content="#6b431e" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <h1>🌸 EVJF</h1>
-  </header>
-  <main>
-    <div class="card">
-      <h2>Bienvenue !</h2>
-      <p>Organise le meilleur EVJF pour la future mariée. 💍</p>
+  <section id="page-cover" class="page active">
+    <div class="grimoire-frame">
+      <div class="ornament">✦ ❧ ✦</div>
+      <h1 class="grimoire-title">Bienvenue Ulyssa</h1>
+      <p class="grimoire-subtitle">dans ce grimoire magique</p>
+      <div class="ornament">✦ ❧ ✦</div>
+      <button id="start-btn" class="btn-start">Commencer</button>
     </div>
-    <div class="card">
-      <h2>Idées d'activités</h2>
-      <ul class="activity-list">
-        <li>🍾 Dégustation de champagne</li>
-        <li>💅 Spa & manucure</li>
-        <li>🎨 Atelier peinture</li>
-        <li>🕺 Cours de danse</li>
-        <li>🍰 Atelier pâtisserie</li>
-        <li>🛍️ Shopping en groupe</li>
-      </ul>
-    </div>
-  </main>
+  </section>
+
+  <section id="page-main" class="page">
+    <header>
+      <h1>🌸 EVJF</h1>
+    </header>
+    <main>
+      <div class="card">
+        <h2>Bienvenue !</h2>
+        <p>Organise le meilleur EVJF pour la future mariée. 💍</p>
+      </div>
+      <div class="card">
+        <h2>Idées d'activités</h2>
+        <ul class="activity-list">
+          <li>🍾 Dégustation de champagne</li>
+          <li>💅 Spa & manucure</li>
+          <li>🎨 Atelier peinture</li>
+          <li>🕺 Cours de danse</li>
+          <li>🍰 Atelier pâtisserie</li>
+          <li>🛍️ Shopping en groupe</li>
+        </ul>
+      </div>
+    </main>
+  </section>
   <script src="js/app.js"></script>
 </body>
 </html>
