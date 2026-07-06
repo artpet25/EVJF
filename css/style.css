@@ -65,6 +65,15 @@ body {
   margin: 0.7rem 0;
 }
 
+.grimoire-message {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #5a4326;
+  margin: 0.5rem 0 1.5rem;
+}
+
 .btn-start {
   margin-top: 2rem;
   font-family: 'MedievalSharp', cursive;
