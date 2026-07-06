@@ -51,17 +51,30 @@ startBtn.addEventListener('click', () => {
   if (globalChronoBtn) globalChronoBtn.classList.remove('hidden');
 });
 
+const messagePage = document.getElementById('page-message');
+const messageContinueBtn = document.getElementById('message-continue-btn');
+const messageBackBtn = document.getElementById('message-back-btn');
 const videoIntroPage = document.getElementById('page-video-intro');
 const introVideo = document.getElementById('intro-video');
 const introContinueBtn = document.getElementById('intro-continue-btn');
 
 continueBtn.addEventListener('click', () => {
   timerPage.classList.remove('active');
+  messagePage.classList.add('active');
+});
+
+messageContinueBtn.addEventListener('click', () => {
+  messagePage.classList.remove('active');
   videoIntroPage.classList.add('active');
   introVideo.play();
   if (introVideo.requestFullscreen) {
     introVideo.requestFullscreen().catch(() => {});
   }
+});
+
+messageBackBtn.addEventListener('click', () => {
+  messagePage.classList.remove('active');
+  timerPage.classList.add('active');
 });
 
 introContinueBtn.addEventListener('click', () => {
@@ -88,7 +101,7 @@ introBackBtn.addEventListener('click', () => {
   if (document.fullscreenElement) document.exitFullscreen();
   introVideo.pause();
   videoIntroPage.classList.remove('active');
-  timerPage.classList.add('active');
+  messagePage.classList.add('active');
 });
 
 mainBackBtn.addEventListener('click', () => {
