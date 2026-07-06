@@ -25,7 +25,9 @@ body {
 
 #page-cover.active,
 #page-timer.active,
-#page-four.active {
+#page-four.active,
+#page-five.active,
+#page-six.active {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -152,7 +154,7 @@ header h1 {
   z-index: 10;
 }
 
-.modal.hidden { display: none; }
+.hidden { display: none; }
 
 main {
   max-width: 480px;
@@ -197,6 +199,13 @@ button:hover { opacity: 0.85; }
   padding: 0;
 }
 
+.tapestry-thumb {
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 3 / 4;
+  margin: 0.5rem auto;
+}
+
 .thumb-number {
   position: absolute;
   top: 0.35rem;
@@ -235,8 +244,6 @@ main .btn-start {
   font-style: italic;
   margin-top: 0.8rem;
 }
-
-.code-error.hidden { display: none; }
 
 .code-actions {
   display: flex;
