@@ -150,21 +150,6 @@ main {
   padding: 0 1rem;
 }
 
-.card {
-  background: var(--parchment-light);
-  border: 2px double var(--gold);
-  border-radius: 8px;
-  padding: 1.2rem;
-  margin-bottom: 1rem;
-  box-shadow: var(--shadow);
-}
-
-.card h2 {
-  font-family: 'MedievalSharp', cursive;
-  color: var(--terracotta);
-  margin-bottom: 0.8rem;
-}
-
 button {
   font-family: 'EB Garamond', serif;
   background: linear-gradient(180deg, #8b5a2b, #6b431e);
@@ -178,15 +163,43 @@ button {
 
 button:hover { opacity: 0.85; }
 
-.activity-list {
-  list-style: none;
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+}
+
+.gallery-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-style: italic;
+  color: #5a4326;
+  padding: 3rem 1rem;
+}
+
+.gallery-thumb {
+  aspect-ratio: 1;
+  border: 2px double var(--gold);
+  border-radius: 6px;
+  background-size: cover;
+  background-position: center;
   padding: 0;
 }
 
-.activity-list li {
-  padding: 0.5rem 0;
-  border-bottom: 1px dashed var(--parchment-dark);
-  font-size: 0.95rem;
+.lightbox-content {
+  max-width: 92vw;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.activity-list li:last-child { border-bottom: none; }
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 75vh;
+  border: 3px double var(--gold);
+  border-radius: 6px;
+  object-fit: contain;
+  background: var(--parchment-light);
+}

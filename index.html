@@ -33,25 +33,11 @@
 
   <section id="page-main" class="page">
     <header>
-      <h1>🏺 EVJF</h1>
+      <h1>🏺</h1>
       <button id="chrono-btn" class="chrono-btn">⏱ <span id="chrono-mini">60:00</span></button>
     </header>
     <main>
-      <div class="card">
-        <h2>Bienvenue !</h2>
-        <p>Organise le meilleur EVJF pour la future mariée. 💍</p>
-      </div>
-      <div class="card">
-        <h2>Idées d'activités</h2>
-        <ul class="activity-list">
-          <li>🍾 Dégustation de champagne</li>
-          <li>💅 Spa & manucure</li>
-          <li>🎨 Atelier peinture</li>
-          <li>🕺 Cours de danse</li>
-          <li>🍰 Atelier pâtisserie</li>
-          <li>🛍️ Shopping en groupe</li>
-        </ul>
-      </div>
+      <div id="gallery-grid" class="gallery-grid"></div>
     </main>
   </section>
 
@@ -60,6 +46,13 @@
       <p class="timer-label">Temps restant</p>
       <div id="countdown-modal" class="countdown">60:00</div>
       <button id="close-chrono-btn" class="btn-start">Fermer</button>
+    </div>
+  </div>
+
+  <div id="lightbox" class="modal hidden">
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Photo souvenir" />
+      <button id="lightbox-close-btn" class="btn-start">Fermer</button>
     </div>
   </div>
   <script src="js/app.js"></script>

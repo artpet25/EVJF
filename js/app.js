@@ -55,3 +55,42 @@ chronoBtn.addEventListener('click', () => {
 closeChronoBtn.addEventListener('click', () => {
   chronoModal.classList.add('hidden');
 });
+
+const PHOTOS = [
+  'photos/photo-1.jpeg',
+  'photos/photo-2.jpeg',
+  'photos/photo-3.jpeg',
+  'photos/photo-4.jpeg',
+  'photos/photo-5.jpeg',
+  'photos/photo-6.jpeg',
+];
+
+const galleryGrid = document.getElementById('gallery-grid');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCloseBtn = document.getElementById('lightbox-close-btn');
+
+function renderGallery() {
+  if (PHOTOS.length === 0) {
+    galleryGrid.innerHTML = '<p class="gallery-empty">Les souvenirs seront bientôt ici...</p>';
+    return;
+  }
+  PHOTOS.forEach((src) => {
+    const thumb = document.createElement('button');
+    thumb.className = 'gallery-thumb';
+    thumb.style.backgroundImage = `url(${src})`;
+    thumb.setAttribute('aria-label', 'Ouvrir la photo');
+    thumb.addEventListener('click', () => {
+      lightboxImg.src = src;
+      lightbox.classList.remove('hidden');
+    });
+    galleryGrid.appendChild(thumb);
+  });
+}
+
+lightboxCloseBtn.addEventListener('click', () => {
+  lightbox.classList.add('hidden');
+  lightboxImg.src = '';
+});
+
+renderGallery();
