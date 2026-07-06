@@ -49,6 +49,8 @@
       <h1 class="grimoire-title">Bravo Ulyssa !</h1>
       <p class="grimoire-subtitle">Tu as percé le secret du grimoire...</p>
       <div class="ornament">✦ ❧ ✦</div>
+      <button id="video-btn" class="btn-start">🎥 Voir la vidéo</button>
+      <button id="back-btn" class="btn-start">⬅ Retour</button>
     </div>
   </section>
 
@@ -72,8 +74,16 @@
     </div>
   </div>
 
+  <div id="video-modal" class="modal hidden">
+    <div class="lightbox-content">
+      <video id="page-video" class="page-video" controls playsinline></video>
+      <button id="video-close-btn" class="btn-start">Fermer</button>
+    </div>
+  </div>
+
   <div id="lightbox" class="modal hidden">
     <div class="lightbox-content">
+      <p id="lightbox-number" class="lightbox-number"></p>
       <img id="lightbox-img" src="" alt="Photo souvenir" />
       <button id="lightbox-close-btn" class="btn-start">Fermer</button>
     </div>

@@ -188,12 +188,27 @@ button:hover { opacity: 0.85; }
 }
 
 .gallery-thumb {
+  position: relative;
   aspect-ratio: 1;
   border: 2px double var(--gold);
   border-radius: 6px;
   background-size: cover;
   background-position: center;
   padding: 0;
+}
+
+.thumb-number {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.35rem;
+  min-width: 1.6rem;
+  padding: 0.1rem 0.4rem;
+  background: rgba(59, 42, 26, 0.75);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  color: #f5e6c8;
+  font-family: 'MedievalSharp', cursive;
+  font-size: 0.85rem;
 }
 
 main .btn-start {
@@ -241,6 +256,13 @@ main .btn-start {
   gap: 1rem;
 }
 
+.lightbox-number {
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1.3rem;
+  color: var(--parchment-light);
+  letter-spacing: 2px;
+}
+
 .lightbox-content img {
   max-width: 100%;
   max-height: 75vh;
@@ -248,4 +270,12 @@ main .btn-start {
   border-radius: 6px;
   object-fit: contain;
   background: var(--parchment-light);
+}
+
+.page-video {
+  max-width: 100%;
+  max-height: 75vh;
+  border: 3px double var(--gold);
+  border-radius: 6px;
+  background: black;
 }

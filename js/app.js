@@ -65,9 +65,12 @@ const PHOTOS = [
   'photos/photo-6.jpeg',
 ];
 
+const ROMAN_NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+
 const galleryGrid = document.getElementById('gallery-grid');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
+const lightboxNumber = document.getElementById('lightbox-number');
 const lightboxCloseBtn = document.getElementById('lightbox-close-btn');
 
 function renderGallery() {
@@ -75,13 +78,16 @@ function renderGallery() {
     galleryGrid.innerHTML = '<p class="gallery-empty">Les souvenirs seront bientôt ici...</p>';
     return;
   }
-  PHOTOS.forEach((src) => {
+  PHOTOS.forEach((src, index) => {
+    const numeral = ROMAN_NUMERALS[index] || String(index + 1);
     const thumb = document.createElement('button');
     thumb.className = 'gallery-thumb';
     thumb.style.backgroundImage = `url(${src})`;
-    thumb.setAttribute('aria-label', 'Ouvrir la photo');
+    thumb.setAttribute('aria-label', `Ouvrir la photo ${numeral}`);
+    thumb.innerHTML = `<span class="thumb-number">${numeral}</span>`;
     thumb.addEventListener('click', () => {
       lightboxImg.src = src;
+      lightboxNumber.textContent = numeral;
       lightbox.classList.remove('hidden');
     });
     galleryGrid.appendChild(thumb);
@@ -95,7 +101,7 @@ lightboxCloseBtn.addEventListener('click', () => {
 
 renderGallery();
 
-const SECRET_CODE = '148147';
+const SECRET_CODE = '487114';
 const codeBtn = document.getElementById('code-btn');
 const codeModal = document.getElementById('code-modal');
 const codeInput = document.getElementById('code-input');
@@ -130,4 +136,46 @@ codeCancelBtn.addEventListener('click', closeCodeModal);
 codeSubmitBtn.addEventListener('click', submitCode);
 codeInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') submitCode();
+});
+
+const backBtn = document.getElementById('back-btn');
+
+backBtn.addEventListener('click', () => {
+  pageFour.classList.remove('active');
+  mainPage.classList.add('active');
+});
+
+const videoBtn = document.getElementById('video-btn');
+const videoModal = document.getElementById('video-modal');
+const pageVideo = document.getElementById('page-video');
+const videoCloseBtn = document.getElementById('video-close-btn');
+
+videoBtn.addEventListener('click', () => {
+  pageVideo.src = 'videos/video-1.mp4';
+  videoModal.classList.remove('hidden');
+  pageVideo.play();
+  if (pageVideo.requestFullscreen) {
+    pageVideo.requestFullscreen().catch(() => {});
+  }
+});
+
+function closeVideoModal() {
+  pageVideo.pause();
+  pageVideo.removeAttribute('src');
+  pageVideo.load();
+  videoModal.classList.add('hidden');
+}
+
+videoCloseBtn.addEventListener('click', () => {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else {
+    closeVideoModal();
+  }
+});
+
+document.addEventListener('fullscreenchange', () => {
+  if (!document.fullscreenElement && !videoModal.classList.contains('hidden')) {
+    closeVideoModal();
+  }
 });
