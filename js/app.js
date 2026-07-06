@@ -179,3 +179,31 @@ document.addEventListener('fullscreenchange', () => {
     closeVideoModal();
   }
 });
+
+const nextToFiveBtn = document.getElementById('next-to-five-btn');
+const pageFive = document.getElementById('page-five');
+
+pageVideo.addEventListener('ended', () => {
+  nextToFiveBtn.classList.remove('hidden');
+});
+
+nextToFiveBtn.addEventListener('click', () => {
+  pageFour.classList.remove('active');
+  pageFive.classList.add('active');
+});
+
+const tapestryThumb = document.getElementById('tapestry-thumb');
+
+tapestryThumb.addEventListener('click', () => {
+  lightboxImg.src = 'photos/tapestry-1.jpeg';
+  lightboxNumber.textContent = '';
+  lightbox.classList.remove('hidden');
+});
+
+const nextToSixBtn = document.getElementById('next-to-six-btn');
+const pageSix = document.getElementById('page-six');
+
+nextToSixBtn.addEventListener('click', () => {
+  pageFive.classList.remove('active');
+  pageSix.classList.add('active');
+});
