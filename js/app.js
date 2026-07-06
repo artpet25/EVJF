@@ -368,3 +368,18 @@ flightBackBtn.addEventListener('click', () => {
   pageFlight.classList.remove('active');
   pageVideoFinal.classList.add('active');
 });
+
+const flightError = document.getElementById('flight-error');
+const flightRest = document.getElementById('flight-rest');
+const flightOptionBtns = document.querySelectorAll('.flight-option-btn');
+
+flightOptionBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    if (btn.dataset.answer === 'personne') {
+      flightError.classList.add('hidden');
+      flightRest.classList.remove('hidden');
+    } else {
+      flightError.classList.remove('hidden');
+    }
+  });
+});

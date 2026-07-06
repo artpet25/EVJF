@@ -355,7 +355,8 @@ main .btn-start {
   margin: 1rem 0;
 }
 
-.quiz-option-btn {
+.quiz-option-btn,
+.flight-option-btn {
   font-family: 'MedievalSharp', cursive;
   background: linear-gradient(180deg, #8b5a2b, #6b431e);
   color: #f5e6c8;
@@ -366,7 +367,8 @@ main .btn-start {
   cursor: pointer;
 }
 
-.quiz-option-btn:hover { opacity: 0.85; }
+.quiz-option-btn:hover,
+.flight-option-btn:hover { opacity: 0.85; }
 
 .story-text {
   font-family: 'EB Garamond', serif;
@@ -386,17 +388,6 @@ main .btn-start {
   text-align: center;
 }
 
-.story-options {
-  list-style: none;
-  padding: 1rem 1.2rem;
-  margin: 0 0 1rem;
-  background: var(--parchment-light);
-  border: 2px double var(--gold);
-  border-radius: 8px;
-  font-family: 'EB Garamond', serif;
-  color: var(--ink);
-}
-
-.story-options li {
-  padding: 0.2rem 0;
+.flight-option-btn {
+  text-align: left;
 }
