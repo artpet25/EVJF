@@ -35,17 +35,34 @@ setInterval(tickCountdown, 1000);
 tickCountdown();
 
 startBtn.addEventListener('click', () => {
-  if (!localStorage.getItem(COUNTDOWN_KEY)) {
-    localStorage.setItem(COUNTDOWN_KEY, Date.now() + COUNTDOWN_MS);
-  }
+  localStorage.setItem(COUNTDOWN_KEY, Date.now() + COUNTDOWN_MS);
   tickCountdown();
   coverPage.classList.remove('active');
   timerPage.classList.add('active');
 });
 
+const videoIntroPage = document.getElementById('page-video-intro');
+const introVideo = document.getElementById('intro-video');
+const introContinueBtn = document.getElementById('intro-continue-btn');
+
 continueBtn.addEventListener('click', () => {
   timerPage.classList.remove('active');
+  videoIntroPage.classList.add('active');
+  introVideo.play();
+  if (introVideo.requestFullscreen) {
+    introVideo.requestFullscreen().catch(() => {});
+  }
+});
+
+introContinueBtn.addEventListener('click', () => {
+  if (document.fullscreenElement) document.exitFullscreen();
+  introVideo.pause();
+  videoIntroPage.classList.remove('active');
   mainPage.classList.add('active');
+});
+
+introVideo.addEventListener('ended', () => {
+  if (document.fullscreenElement) document.exitFullscreen();
 });
 
 chronoBtn.addEventListener('click', () => {
@@ -164,6 +181,7 @@ function closeVideoModal() {
   pageVideo.removeAttribute('src');
   pageVideo.load();
   videoModal.classList.add('hidden');
+  nextToFiveBtn.classList.remove('hidden');
 }
 
 videoCloseBtn.addEventListener('click', () => {
