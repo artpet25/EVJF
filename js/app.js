@@ -128,7 +128,7 @@ const PHOTOS = [
   'photos/photo-6.jpeg',
 ];
 
-const ROMAN_NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+const ROMAN_NUMERALS = ['IV', 'I', 'VI', 'III', 'V', 'II'];
 
 const galleryGrid = document.getElementById('gallery-grid');
 const lightbox = document.getElementById('lightbox');
