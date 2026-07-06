@@ -6,8 +6,8 @@
   "scope": "/EVJF/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#fff0f6",
-  "theme_color": "#e91e8c",
+  "background_color": "#ecdcb8",
+  "theme_color": "#6b431e",
   "icons": [
     {
       "src": "icons/icon-192.png",
