@@ -6,7 +6,7 @@ if ('serviceWorker' in navigator) {
 
 const startBtn = document.getElementById('start-btn');
 const continueBtn = document.getElementById('continue-btn');
-const chronoBtn = document.getElementById('chrono-btn');
+const globalChronoBtn = document.getElementById('global-chrono-btn');
 const closeChronoBtn = document.getElementById('close-chrono-btn');
 const coverPage = document.getElementById('page-cover');
 const timerPage = document.getElementById('page-timer');
@@ -28,15 +28,20 @@ function tickCountdown() {
   const text = formatCountdown(endTime - Date.now());
   document.getElementById('countdown').textContent = text;
   document.getElementById('countdown-modal').textContent = text;
-  document.getElementById('chrono-mini').textContent = text;
+  document.getElementById('global-chrono-text').textContent = text;
 }
 
 setInterval(tickCountdown, 1000);
 tickCountdown();
 
+if (localStorage.getItem(COUNTDOWN_KEY)) {
+  globalChronoBtn.classList.remove('hidden');
+}
+
 startBtn.addEventListener('click', () => {
   localStorage.setItem(COUNTDOWN_KEY, Date.now() + COUNTDOWN_MS);
   tickCountdown();
+  globalChronoBtn.classList.remove('hidden');
   coverPage.classList.remove('active');
   timerPage.classList.add('active');
 });
@@ -86,7 +91,7 @@ mainBackBtn.addEventListener('click', () => {
   videoIntroPage.classList.add('active');
 });
 
-chronoBtn.addEventListener('click', () => {
+globalChronoBtn.addEventListener('click', () => {
   chronoModal.classList.remove('hidden');
 });
 
