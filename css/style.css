@@ -27,8 +27,7 @@ body {
 #page-timer.active,
 #page-video-intro.active,
 #page-four.active,
-#page-five.active,
-#page-six.active {
+#page-five.active {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -286,4 +285,62 @@ main .btn-start {
   border: 3px double var(--gold);
   border-radius: 6px;
   background: black;
+}
+
+.crew-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  color: var(--ink);
+  background: var(--parchment-light);
+  border: 2px double var(--gold);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.crew-card.selected {
+  border: 3px solid var(--terracotta);
+  box-shadow: 0 0 0 3px rgba(168, 82, 47, 0.25);
+}
+
+.crew-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  border-radius: 6px;
+  margin-bottom: 0.7rem;
+}
+
+.crew-name {
+  font-family: 'MedievalSharp', cursive;
+  color: var(--terracotta);
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.crew-role {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #5a4326;
+}
+
+.crew-desc {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.crew-item {
+  font-family: 'EB Garamond', serif;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+#crew-confirm-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
