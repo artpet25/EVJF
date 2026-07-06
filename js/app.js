@@ -23,27 +23,32 @@ function formatCountdown(ms) {
   return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
+function setTextIfPresent(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
+}
+
 function tickCountdown() {
   const endTime = Number(localStorage.getItem(COUNTDOWN_KEY));
   const text = formatCountdown(endTime - Date.now());
-  document.getElementById('countdown').textContent = text;
-  document.getElementById('countdown-modal').textContent = text;
-  document.getElementById('global-chrono-text').textContent = text;
+  setTextIfPresent('countdown', text);
+  setTextIfPresent('countdown-modal', text);
+  setTextIfPresent('global-chrono-text', text);
 }
 
 setInterval(tickCountdown, 1000);
 tickCountdown();
 
-if (localStorage.getItem(COUNTDOWN_KEY)) {
+if (localStorage.getItem(COUNTDOWN_KEY) && globalChronoBtn) {
   globalChronoBtn.classList.remove('hidden');
 }
 
 startBtn.addEventListener('click', () => {
   localStorage.setItem(COUNTDOWN_KEY, Date.now() + COUNTDOWN_MS);
-  tickCountdown();
-  globalChronoBtn.classList.remove('hidden');
   coverPage.classList.remove('active');
   timerPage.classList.add('active');
+  tickCountdown();
+  if (globalChronoBtn) globalChronoBtn.classList.remove('hidden');
 });
 
 const videoIntroPage = document.getElementById('page-video-intro');
@@ -91,9 +96,11 @@ mainBackBtn.addEventListener('click', () => {
   videoIntroPage.classList.add('active');
 });
 
-globalChronoBtn.addEventListener('click', () => {
-  chronoModal.classList.remove('hidden');
-});
+if (globalChronoBtn) {
+  globalChronoBtn.addEventListener('click', () => {
+    chronoModal.classList.remove('hidden');
+  });
+}
 
 closeChronoBtn.addEventListener('click', () => {
   chronoModal.classList.add('hidden');
