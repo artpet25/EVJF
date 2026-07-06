@@ -94,3 +94,40 @@ lightboxCloseBtn.addEventListener('click', () => {
 });
 
 renderGallery();
+
+const SECRET_CODE = '148147';
+const codeBtn = document.getElementById('code-btn');
+const codeModal = document.getElementById('code-modal');
+const codeInput = document.getElementById('code-input');
+const codeError = document.getElementById('code-error');
+const codeSubmitBtn = document.getElementById('code-submit-btn');
+const codeCancelBtn = document.getElementById('code-cancel-btn');
+const pageFour = document.getElementById('page-four');
+
+function openCodeModal() {
+  codeInput.value = '';
+  codeError.classList.add('hidden');
+  codeModal.classList.remove('hidden');
+  codeInput.focus();
+}
+
+function closeCodeModal() {
+  codeModal.classList.add('hidden');
+}
+
+function submitCode() {
+  if (codeInput.value === SECRET_CODE) {
+    closeCodeModal();
+    mainPage.classList.remove('active');
+    pageFour.classList.add('active');
+  } else {
+    codeError.classList.remove('hidden');
+  }
+}
+
+codeBtn.addEventListener('click', openCodeModal);
+codeCancelBtn.addEventListener('click', closeCodeModal);
+codeSubmitBtn.addEventListener('click', submitCode);
+codeInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') submitCode();
+});

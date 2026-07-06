@@ -39,8 +39,30 @@
     <main>
       <p class="grimoire-message">Avant l'aube, sur le bateau, mes songes furent agités, les dieux me sont apparus en rêve. Peut-être ce message m'aidera-t-il à poursuivre ma quête et à comprendre comment utiliser ce livre magique.</p>
       <div id="gallery-grid" class="gallery-grid"></div>
+      <button id="code-btn" class="btn-start">🔑 Trouver un code</button>
     </main>
   </section>
+
+  <section id="page-four" class="page">
+    <div class="grimoire-frame">
+      <div class="ornament">✦ ❧ ✦</div>
+      <h1 class="grimoire-title">Bravo Ulyssa !</h1>
+      <p class="grimoire-subtitle">Tu as percé le secret du grimoire...</p>
+      <div class="ornament">✦ ❧ ✦</div>
+    </div>
+  </section>
+
+  <div id="code-modal" class="modal hidden">
+    <div class="grimoire-frame">
+      <p class="timer-label">Entre le code à 6 chiffres</p>
+      <input id="code-input" class="code-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="------" />
+      <p id="code-error" class="code-error hidden">Code incorrect, essaie encore...</p>
+      <div class="code-actions">
+        <button id="code-cancel-btn" class="btn-start">Annuler</button>
+        <button id="code-submit-btn" class="btn-start">Valider</button>
+      </div>
+    </div>
+  </div>
 
   <div id="chrono-modal" class="modal hidden">
     <div class="grimoire-frame">

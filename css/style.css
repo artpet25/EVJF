@@ -24,7 +24,8 @@ body {
 .page.active { display: block; }
 
 #page-cover.active,
-#page-timer.active {
+#page-timer.active,
+#page-four.active {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -194,6 +195,42 @@ button:hover { opacity: 0.85; }
   background-position: center;
   padding: 0;
 }
+
+main .btn-start {
+  display: block;
+  margin: 1.5rem auto 0;
+}
+
+.code-input {
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1.8rem;
+  letter-spacing: 0.6rem;
+  text-align: center;
+  width: 100%;
+  padding: 0.6rem 0.4rem 0.6rem 1rem;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  background: var(--parchment-light);
+  color: var(--ink);
+}
+
+.code-error {
+  color: var(--terracotta);
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  margin-top: 0.8rem;
+}
+
+.code-error.hidden { display: none; }
+
+.code-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.code-actions .btn-start { margin-top: 0; }
 
 .lightbox-content {
   max-width: 92vw;
