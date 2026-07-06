@@ -225,3 +225,19 @@ nextToSixBtn.addEventListener('click', () => {
   pageFive.classList.remove('active');
   pageSix.classList.add('active');
 });
+
+const crewCards = document.querySelectorAll('.crew-card');
+const crewConfirmBtn = document.getElementById('crew-confirm-btn');
+const crewConfirmation = document.getElementById('crew-confirmation');
+
+crewCards.forEach((card) => {
+  card.addEventListener('click', () => {
+    crewCards.forEach((c) => c.classList.remove('selected'));
+    card.classList.add('selected');
+    crewConfirmBtn.disabled = false;
+  });
+});
+
+crewConfirmBtn.addEventListener('click', () => {
+  crewConfirmation.classList.remove('hidden');
+});

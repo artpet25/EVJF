@@ -73,11 +73,36 @@
   </section>
 
   <section id="page-six" class="page">
-    <div class="grimoire-frame">
-      <div class="ornament">✦ ❧ ✦</div>
-      <h1 class="grimoire-title">À suivre...</h1>
-      <div class="ornament">✦ ❧ ✦</div>
-    </div>
+    <header>
+      <h1>🏺</h1>
+    </header>
+    <main>
+      <p class="grimoire-message">Choisis soigneusement l'équipage pour cette mission et attention, une erreur pourrait avoir de lourdes conséquences.</p>
+
+      <button class="crew-card" data-crew="nautikos">
+        <img src="photos/crew-nautikos.jpeg" alt="Nautikos" class="crew-photo" />
+        <h3 class="crew-name">Nautikos <span class="crew-role">— La navigatrice</span></h3>
+        <p class="crew-desc">Elle calcule la route à suivre, lit les cartes, mesure la distance parcourue et celle qui reste. Un rôle essentiel en mer... mais complètement inutile ici, sauf si on arrive à utiliser ce savoir-faire pour nous retrouver dans cette ville...</p>
+        <p class="crew-item">Objet : une carte et une boussole</p>
+      </button>
+
+      <button class="crew-card" data-crew="kubernetes">
+        <img src="photos/crew-kubernetes.jpeg" alt="Kubernêtês" class="crew-photo" />
+        <h3 class="crew-name">Kubernêtês <span class="crew-role">— La pilote</span></h3>
+        <p class="crew-desc">Elle tient la rame-gouvernail à l'arrière et dirige le navire. Elle doit connaître les étoiles, les vents, les courants. C'est souvent une femme expérimentée, parfois presque aussi importante que le chef.</p>
+        <p class="crew-item">Objet : un gouvernail</p>
+      </button>
+
+      <button class="crew-card" data-crew="proreus">
+        <img src="photos/crew-proreus.jpeg" alt="Prôreus" class="crew-photo" />
+        <h3 class="crew-name">Prôreus <span class="crew-role">— La guetteuse / femme de proue</span></h3>
+        <p class="crew-desc">Postée à l'avant, elle surveille les dangers (rochers, terres, ennemis). Elle ne te servira à absolument rien, comme tu n'as plus de bateau.</p>
+        <p class="crew-item">Objet : une longue-vue</p>
+      </button>
+
+      <button id="crew-confirm-btn" class="btn-start" disabled>Confirmer mon choix</button>
+      <p id="crew-confirmation" class="grimoire-message hidden">Équipage choisi. Bonne chance pour la suite de l'aventure !</p>
+    </main>
   </section>
 
   <div id="code-modal" class="modal hidden">
