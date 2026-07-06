@@ -27,7 +27,10 @@ body {
 #page-timer.active,
 #page-video-intro.active,
 #page-four.active,
-#page-five.active {
+#page-five.active,
+#page-prophecy.active,
+#page-attack.active,
+#page-video-final.active {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -344,3 +347,23 @@ main .btn-start {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+
+.quiz-option-btn {
+  font-family: 'MedievalSharp', cursive;
+  background: linear-gradient(180deg, #8b5a2b, #6b431e);
+  color: #f5e6c8;
+  border: 2px solid var(--gold);
+  border-radius: 30px;
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.quiz-option-btn:hover { opacity: 0.85; }

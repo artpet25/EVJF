@@ -28,6 +28,7 @@
       <p class="timer-label">Le sablier magique s'écoule...</p>
       <div id="countdown" class="countdown">60:00</div>
       <button id="continue-btn" class="btn-start">Continuer</button>
+      <button id="timer-back-btn" class="btn-start">⬅ Retour</button>
     </div>
   </section>
 
@@ -35,6 +36,7 @@
     <div class="grimoire-frame">
       <video id="intro-video" class="page-video" src="videos/video-2.mp4" controls playsinline></video>
       <button id="intro-continue-btn" class="btn-start">Continuer</button>
+      <button id="intro-back-btn" class="btn-start">⬅ Retour</button>
     </div>
   </section>
 
@@ -47,6 +49,7 @@
       <p class="grimoire-message">Avant l'aube, sur le bateau, mes songes furent agités, les dieux me sont apparus en rêve. Peut-être ce message m'aidera-t-il à poursuivre ma quête et à comprendre comment utiliser ce livre magique.</p>
       <div id="gallery-grid" class="gallery-grid"></div>
       <button id="code-btn" class="btn-start">🔑 Trouver un code</button>
+      <button id="main-back-btn" class="btn-start">⬅ Retour</button>
     </main>
   </section>
 
@@ -69,6 +72,7 @@
       <button id="tapestry-thumb" class="gallery-thumb tapestry-thumb" aria-label="Voir la tapisserie" style="background-image: url('photos/tapestry-1.jpeg');"></button>
       <div class="ornament">✦ ❧ ✦</div>
       <button id="next-to-six-btn" class="btn-start">Continuer</button>
+      <button id="five-back-btn" class="btn-start">⬅ Retour</button>
     </div>
   </section>
 
@@ -136,8 +140,45 @@
       </button>
 
       <button id="crew-confirm-btn" class="btn-start" disabled>Confirmer mon choix</button>
+      <p id="crew-error" class="code-error hidden">Ce n'est pas le bon équipage... réfléchis encore.</p>
       <p id="crew-confirmation" class="grimoire-message hidden">Équipage choisi. Bonne chance pour la suite de l'aventure !</p>
+      <button id="crew-continue-btn" class="btn-start hidden">Continuer</button>
+      <button id="six-back-btn" class="btn-start">⬅ Retour</button>
     </main>
+  </section>
+
+  <section id="page-prophecy" class="page">
+    <div class="grimoire-frame">
+      <div class="ornament">✦ ❧ ✦</div>
+      <h1 class="grimoire-title">La Prophétie</h1>
+      <div class="ornament">✦ ❧ ✦</div>
+      <button id="prophecy-continue-btn" class="btn-start">Continuer</button>
+      <button id="prophecy-back-btn" class="btn-start">⬅ Retour</button>
+    </div>
+  </section>
+
+  <section id="page-attack" class="page">
+    <div class="grimoire-frame">
+      <div class="ornament">✦ ❧ ✦</div>
+      <h1 class="grimoire-title">L'attaque</h1>
+      <p class="grimoire-message">Devant le temple, le cyclope te barre la route et rugit : « Quel est le nom de celle qui m'attaque ? »</p>
+      <div class="quiz-options">
+        <button class="quiz-option-btn" data-answer="elsa">Elsa</button>
+        <button class="quiz-option-btn" data-answer="ulyssa">Ulyssa</button>
+        <button class="quiz-option-btn" data-answer="elsounia">Elsounia</button>
+        <button class="quiz-option-btn" data-answer="personne">Personne</button>
+      </div>
+      <p id="attack-error" class="code-error hidden">Mauvaise réponse... le cyclope n'est pas convaincu.</p>
+      <div class="ornament">✦ ❧ ✦</div>
+      <button id="attack-back-btn" class="btn-start">⬅ Retour</button>
+    </div>
+  </section>
+
+  <section id="page-video-final" class="page">
+    <div class="grimoire-frame">
+      <video id="final-video" class="page-video" src="videos/video-3.mp4" controls playsinline></video>
+      <button id="final-back-btn" class="btn-start">⬅ Retour</button>
+    </div>
   </section>
 
   <div id="code-modal" class="modal hidden">

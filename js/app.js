@@ -65,6 +65,27 @@ introVideo.addEventListener('ended', () => {
   if (document.fullscreenElement) document.exitFullscreen();
 });
 
+const timerBackBtn = document.getElementById('timer-back-btn');
+const introBackBtn = document.getElementById('intro-back-btn');
+const mainBackBtn = document.getElementById('main-back-btn');
+
+timerBackBtn.addEventListener('click', () => {
+  timerPage.classList.remove('active');
+  coverPage.classList.add('active');
+});
+
+introBackBtn.addEventListener('click', () => {
+  if (document.fullscreenElement) document.exitFullscreen();
+  introVideo.pause();
+  videoIntroPage.classList.remove('active');
+  timerPage.classList.add('active');
+});
+
+mainBackBtn.addEventListener('click', () => {
+  mainPage.classList.remove('active');
+  videoIntroPage.classList.add('active');
+});
+
 chronoBtn.addEventListener('click', () => {
   chronoModal.classList.remove('hidden');
 });
@@ -210,6 +231,13 @@ nextToFiveBtn.addEventListener('click', () => {
   pageFive.classList.add('active');
 });
 
+const fiveBackBtn = document.getElementById('five-back-btn');
+
+fiveBackBtn.addEventListener('click', () => {
+  pageFive.classList.remove('active');
+  pageFour.classList.add('active');
+});
+
 const tapestryThumb = document.getElementById('tapestry-thumb');
 
 tapestryThumb.addEventListener('click', () => {
@@ -226,18 +254,101 @@ nextToSixBtn.addEventListener('click', () => {
   pageSix.classList.add('active');
 });
 
+const CORRECT_CREW = ['nautikos', 'eretai', 'aoidos'];
+
 const crewCards = document.querySelectorAll('.crew-card');
 const crewConfirmBtn = document.getElementById('crew-confirm-btn');
+const crewError = document.getElementById('crew-error');
 const crewConfirmation = document.getElementById('crew-confirmation');
+const crewContinueBtn = document.getElementById('crew-continue-btn');
+const sixBackBtn = document.getElementById('six-back-btn');
+const pageProphecy = document.getElementById('page-prophecy');
 
 crewCards.forEach((card) => {
   card.addEventListener('click', () => {
-    crewCards.forEach((c) => c.classList.remove('selected'));
-    card.classList.add('selected');
-    crewConfirmBtn.disabled = false;
+    card.classList.toggle('selected');
+    const anySelected = document.querySelectorAll('.crew-card.selected').length > 0;
+    crewConfirmBtn.disabled = !anySelected;
   });
 });
 
 crewConfirmBtn.addEventListener('click', () => {
-  crewConfirmation.classList.remove('hidden');
+  const selected = Array.from(document.querySelectorAll('.crew-card.selected'))
+    .map((card) => card.dataset.crew)
+    .sort();
+  const isCorrect = selected.length === CORRECT_CREW.length &&
+    selected.every((crew, index) => crew === [...CORRECT_CREW].sort()[index]);
+
+  if (isCorrect) {
+    crewError.classList.add('hidden');
+    crewConfirmation.classList.remove('hidden');
+    crewConfirmBtn.classList.add('hidden');
+    crewContinueBtn.classList.remove('hidden');
+  } else {
+    crewError.classList.remove('hidden');
+  }
+});
+
+crewContinueBtn.addEventListener('click', () => {
+  pageSix.classList.remove('active');
+  pageProphecy.classList.add('active');
+});
+
+sixBackBtn.addEventListener('click', () => {
+  pageSix.classList.remove('active');
+  pageFive.classList.add('active');
+});
+
+const prophecyBackBtn = document.getElementById('prophecy-back-btn');
+
+prophecyBackBtn.addEventListener('click', () => {
+  pageProphecy.classList.remove('active');
+  pageSix.classList.add('active');
+});
+
+const pageAttack = document.getElementById('page-attack');
+const attackBackBtn = document.getElementById('attack-back-btn');
+const attackError = document.getElementById('attack-error');
+const quizOptionBtns = document.querySelectorAll('.quiz-option-btn');
+
+const prophecyContinueBtn = document.getElementById('prophecy-continue-btn');
+const pageVideoFinal = document.getElementById('page-video-final');
+const finalVideo = document.getElementById('final-video');
+const finalBackBtn = document.getElementById('final-back-btn');
+
+prophecyContinueBtn.addEventListener('click', () => {
+  pageProphecy.classList.remove('active');
+  pageAttack.classList.add('active');
+});
+
+attackBackBtn.addEventListener('click', () => {
+  pageAttack.classList.remove('active');
+  pageProphecy.classList.add('active');
+});
+
+quizOptionBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    if (btn.dataset.answer === 'personne') {
+      attackError.classList.add('hidden');
+      pageAttack.classList.remove('active');
+      pageVideoFinal.classList.add('active');
+      finalVideo.play();
+      if (finalVideo.requestFullscreen) {
+        finalVideo.requestFullscreen().catch(() => {});
+      }
+    } else {
+      attackError.classList.remove('hidden');
+    }
+  });
+});
+
+finalBackBtn.addEventListener('click', () => {
+  if (document.fullscreenElement) document.exitFullscreen();
+  finalVideo.pause();
+  pageVideoFinal.classList.remove('active');
+  pageAttack.classList.add('active');
+});
+
+finalVideo.addEventListener('ended', () => {
+  if (document.fullscreenElement) document.exitFullscreen();
 });
