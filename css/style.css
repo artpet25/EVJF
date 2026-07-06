@@ -367,3 +367,36 @@ main .btn-start {
 }
 
 .quiz-option-btn:hover { opacity: 0.85; }
+
+.story-text {
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.story-quote {
+  font-style: italic;
+  color: #5a4326;
+}
+
+.story-closing {
+  font-weight: 600;
+  text-align: center;
+}
+
+.story-options {
+  list-style: none;
+  padding: 1rem 1.2rem;
+  margin: 0 0 1rem;
+  background: var(--parchment-light);
+  border: 2px double var(--gold);
+  border-radius: 8px;
+  font-family: 'EB Garamond', serif;
+  color: var(--ink);
+}
+
+.story-options li {
+  padding: 0.2rem 0;
+}

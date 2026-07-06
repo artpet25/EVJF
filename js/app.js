@@ -352,3 +352,19 @@ finalBackBtn.addEventListener('click', () => {
 finalVideo.addEventListener('ended', () => {
   if (document.fullscreenElement) document.exitFullscreen();
 });
+
+const videoFinalContinueBtn = document.getElementById('video-final-continue-btn');
+const pageFlight = document.getElementById('page-flight');
+const flightBackBtn = document.getElementById('flight-back-btn');
+
+videoFinalContinueBtn.addEventListener('click', () => {
+  if (document.fullscreenElement) document.exitFullscreen();
+  finalVideo.pause();
+  pageVideoFinal.classList.remove('active');
+  pageFlight.classList.add('active');
+});
+
+flightBackBtn.addEventListener('click', () => {
+  pageFlight.classList.remove('active');
+  pageVideoFinal.classList.add('active');
+});
