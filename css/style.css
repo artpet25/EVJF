@@ -324,6 +324,10 @@ main .btn-start {
   margin-bottom: 0.7rem;
 }
 
+.crew-photo-nautikos {
+  object-position: center 25%;
+}
+
 .crew-name {
   font-family: 'MedievalSharp', cursive;
   color: var(--terracotta);
