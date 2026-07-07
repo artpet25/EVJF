@@ -455,16 +455,23 @@ flightBackBtn.addEventListener('click', () => {
 });
 
 const flightError = document.getElementById('flight-error');
-const flightRest = document.getElementById('flight-rest');
 const flightOptionBtns = document.querySelectorAll('.flight-option-btn');
+const pageFlightEnd = document.getElementById('page-flight-end');
+const flightEndBackBtn = document.getElementById('flight-end-back-btn');
 
 flightOptionBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     if (btn.dataset.answer === 'personne') {
       flightError.classList.add('hidden');
-      flightRest.classList.remove('hidden');
+      pageFlight.classList.remove('active');
+      pageFlightEnd.classList.add('active');
     } else {
       flightError.classList.remove('hidden');
     }
   });
+});
+
+flightEndBackBtn.addEventListener('click', () => {
+  pageFlightEnd.classList.remove('active');
+  pageFlight.classList.add('active');
 });
