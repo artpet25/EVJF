@@ -315,8 +315,6 @@ const CORRECT_CREW = ['nautikos', 'eretai', 'aoidos'];
 const crewCards = document.querySelectorAll('.crew-card');
 const crewConfirmBtn = document.getElementById('crew-confirm-btn');
 const crewError = document.getElementById('crew-error');
-const crewConfirmation = document.getElementById('crew-confirmation');
-const crewContinueBtn = document.getElementById('crew-continue-btn');
 const sixBackBtn = document.getElementById('six-back-btn');
 const pageProphecy = document.getElementById('page-prophecy');
 
@@ -337,17 +335,11 @@ crewConfirmBtn.addEventListener('click', () => {
 
   if (isCorrect) {
     crewError.classList.add('hidden');
-    crewConfirmation.classList.remove('hidden');
-    crewConfirmBtn.classList.add('hidden');
-    crewContinueBtn.classList.remove('hidden');
+    pageSix.classList.remove('active');
+    pageProphecy.classList.add('active');
   } else {
     crewError.classList.remove('hidden');
   }
-});
-
-crewContinueBtn.addEventListener('click', () => {
-  pageSix.classList.remove('active');
-  pageProphecy.classList.add('active');
 });
 
 sixBackBtn.addEventListener('click', () => {
