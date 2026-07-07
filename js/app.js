@@ -136,7 +136,7 @@ introBackBtn.addEventListener('click', () => {
 
 mainBackBtn.addEventListener('click', () => {
   mainPage.classList.remove('active');
-  videoIntroPage.classList.add('active');
+  pageCyclops.classList.add('active');
 });
 
 if (globalChronoBtn) {
