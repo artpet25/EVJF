@@ -77,10 +77,40 @@ messageBackBtn.addEventListener('click', () => {
   timerPage.classList.add('active');
 });
 
+const pageCyclops = document.getElementById('page-cyclops');
+const tinderPhoto = document.getElementById('tinder-photo');
+const tinderNextBtn = document.getElementById('tinder-next-btn');
+const cyclopsBackBtn = document.getElementById('cyclops-back-btn');
+const cyclopsContinueBtn = document.getElementById('cyclops-continue-btn');
+
+const CYCLOPS_PHOTOS = ['photos/cyclops-1.jpeg', 'photos/cyclops-2.jpeg'];
+let cyclopsIndex = 0;
+
 introContinueBtn.addEventListener('click', () => {
   if (document.fullscreenElement) document.exitFullscreen();
   introVideo.pause();
   videoIntroPage.classList.remove('active');
+  pageCyclops.classList.add('active');
+});
+
+tinderNextBtn.addEventListener('click', () => {
+  cyclopsIndex += 1;
+  if (cyclopsIndex < CYCLOPS_PHOTOS.length) {
+    tinderPhoto.src = CYCLOPS_PHOTOS[cyclopsIndex];
+  }
+  if (cyclopsIndex >= CYCLOPS_PHOTOS.length - 1) {
+    tinderNextBtn.classList.add('hidden');
+    cyclopsContinueBtn.classList.remove('hidden');
+  }
+});
+
+cyclopsBackBtn.addEventListener('click', () => {
+  pageCyclops.classList.remove('active');
+  videoIntroPage.classList.add('active');
+});
+
+cyclopsContinueBtn.addEventListener('click', () => {
+  pageCyclops.classList.remove('active');
   mainPage.classList.add('active');
 });
 
@@ -164,7 +194,7 @@ lightboxCloseBtn.addEventListener('click', () => {
 
 renderGallery();
 
-const SECRET_CODE = '487114';
+const SECRET_CODE = '841417';
 const codeBtn = document.getElementById('code-btn');
 const codeModal = document.getElementById('code-modal');
 const codeInput = document.getElementById('code-input');

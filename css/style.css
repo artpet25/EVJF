@@ -27,6 +27,7 @@ body {
 #page-timer.active,
 #page-message.active,
 #page-video-intro.active,
+#page-cyclops.active,
 #page-four.active,
 #page-five.active,
 #page-prophecy.active,
@@ -396,4 +397,14 @@ main .btn-start {
 
 .flight-option-btn {
   text-align: left;
+}
+
+.tinder-photo {
+  display: block;
+  width: 100%;
+  max-height: 60vh;
+  object-fit: cover;
+  border: 3px double var(--gold);
+  border-radius: 10px;
+  margin: 1rem 0;
 }
