@@ -294,14 +294,15 @@ fiveBackBtn.addEventListener('click', () => {
 });
 
 const tapestryThumb = document.getElementById('tapestry-thumb');
+const nextToSixBtn = document.getElementById('next-to-six-btn');
 
 tapestryThumb.addEventListener('click', () => {
   lightboxImg.src = 'photos/tapestry-1.jpeg';
   lightboxNumber.textContent = '';
   lightbox.classList.remove('hidden');
+  nextToSixBtn.classList.remove('hidden');
 });
 
-const nextToSixBtn = document.getElementById('next-to-six-btn');
 const pageSix = document.getElementById('page-six');
 
 nextToSixBtn.addEventListener('click', () => {
