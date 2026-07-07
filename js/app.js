@@ -364,8 +364,45 @@ const pageVideoFinal = document.getElementById('page-video-final');
 const finalVideo = document.getElementById('final-video');
 const finalBackBtn = document.getElementById('final-back-btn');
 
+const pageProphecyVideo = document.getElementById('page-prophecy-video');
+const prophecyVideo = document.getElementById('prophecy-video');
+const prophecyVideoText = document.getElementById('prophecy-video-text');
+const prophecyVideoBackBtn = document.getElementById('prophecy-video-back-btn');
+const prophecyVideoContinueBtn = document.getElementById('prophecy-video-continue-btn');
+
 prophecyContinueBtn.addEventListener('click', () => {
   pageProphecy.classList.remove('active');
+  pageProphecyVideo.classList.add('active');
+  prophecyVideo.play();
+  if (prophecyVideo.requestFullscreen) {
+    prophecyVideo.requestFullscreen().catch(() => {});
+  }
+});
+
+function revealProphecyVideoContinue() {
+  if (document.fullscreenElement) document.exitFullscreen();
+  prophecyVideoText.classList.remove('hidden');
+  prophecyVideoContinueBtn.classList.remove('hidden');
+}
+
+prophecyVideo.addEventListener('ended', revealProphecyVideoContinue);
+
+prophecyVideoBackBtn.addEventListener('click', () => {
+  if (document.fullscreenElement) document.exitFullscreen();
+  prophecyVideo.pause();
+  pageProphecyVideo.classList.remove('active');
+  pageProphecy.classList.add('active');
+});
+
+document.addEventListener('fullscreenchange', () => {
+  if (!document.fullscreenElement && pageProphecyVideo.classList.contains('active') && prophecyVideoContinueBtn.classList.contains('hidden')) {
+    prophecyVideoText.classList.remove('hidden');
+    prophecyVideoContinueBtn.classList.remove('hidden');
+  }
+});
+
+prophecyVideoContinueBtn.addEventListener('click', () => {
+  pageProphecyVideo.classList.remove('active');
   pageAttack.classList.add('active');
 });
 

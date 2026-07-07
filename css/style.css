@@ -31,6 +31,7 @@ body {
 #page-four.active,
 #page-five.active,
 #page-prophecy.active,
+#page-prophecy-video.active,
 #page-attack.active,
 #page-video-final.active {
   display: flex;
