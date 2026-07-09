@@ -93,16 +93,63 @@ introContinueBtn.addEventListener('click', () => {
   pageCyclops.classList.add('active');
 });
 
-tinderNextBtn.addEventListener('click', () => {
+function advanceCyclopsPhoto() {
+  if (cyclopsIndex >= CYCLOPS_PHOTOS.length - 1) return;
   cyclopsIndex += 1;
-  if (cyclopsIndex < CYCLOPS_PHOTOS.length) {
-    tinderPhoto.src = CYCLOPS_PHOTOS[cyclopsIndex];
-  }
+  tinderPhoto.src = CYCLOPS_PHOTOS[cyclopsIndex];
   if (cyclopsIndex >= CYCLOPS_PHOTOS.length - 1) {
     tinderNextBtn.classList.add('hidden');
     cyclopsContinueBtn.classList.remove('hidden');
   }
+}
+
+tinderNextBtn.addEventListener('click', advanceCyclopsPhoto);
+
+const SWIPE_THRESHOLD = 80;
+let swipeStartX = 0;
+let swipeCurrentX = 0;
+let isDragging = false;
+
+function canSwipe() {
+  return cyclopsIndex < CYCLOPS_PHOTOS.length - 1;
+}
+
+tinderPhoto.addEventListener('pointerdown', (event) => {
+  if (!canSwipe()) return;
+  isDragging = true;
+  swipeStartX = event.clientX;
+  swipeCurrentX = 0;
+  tinderPhoto.classList.add('dragging');
+  tinderPhoto.setPointerCapture(event.pointerId);
 });
+
+tinderPhoto.addEventListener('pointermove', (event) => {
+  if (!isDragging) return;
+  swipeCurrentX = event.clientX - swipeStartX;
+  tinderPhoto.style.transform = `translateX(${swipeCurrentX}px) rotate(${swipeCurrentX / 20}deg)`;
+});
+
+function endTinderSwipe() {
+  if (!isDragging) return;
+  isDragging = false;
+  tinderPhoto.classList.remove('dragging');
+
+  if (Math.abs(swipeCurrentX) > SWIPE_THRESHOLD) {
+    const direction = swipeCurrentX > 0 ? 'right' : 'left';
+    tinderPhoto.classList.add(`swipe-out-${direction}`);
+    tinderPhoto.style.transform = '';
+    setTimeout(() => {
+      tinderPhoto.classList.remove(`swipe-out-${direction}`);
+      advanceCyclopsPhoto();
+    }, 300);
+  } else {
+    tinderPhoto.style.transform = '';
+  }
+  swipeCurrentX = 0;
+}
+
+tinderPhoto.addEventListener('pointerup', endTinderSwipe);
+tinderPhoto.addEventListener('pointercancel', endTinderSwipe);
 
 cyclopsBackBtn.addEventListener('click', () => {
   pageCyclops.classList.remove('active');
@@ -336,7 +383,11 @@ crewConfirmBtn.addEventListener('click', () => {
   if (isCorrect) {
     crewError.classList.add('hidden');
     pageSix.classList.remove('active');
-    pageProphecy.classList.add('active');
+    pageProphecyVideo.classList.add('active');
+    prophecyVideo.play();
+    if (prophecyVideo.requestFullscreen) {
+      prophecyVideo.requestFullscreen().catch(() => {});
+    }
   } else {
     crewError.classList.remove('hidden');
   }
@@ -351,7 +402,7 @@ const prophecyBackBtn = document.getElementById('prophecy-back-btn');
 
 prophecyBackBtn.addEventListener('click', () => {
   pageProphecy.classList.remove('active');
-  pageSix.classList.add('active');
+  pageProphecyVideo.classList.add('active');
 });
 
 const pageAttack = document.getElementById('page-attack');
@@ -372,11 +423,7 @@ const prophecyVideoContinueBtn = document.getElementById('prophecy-video-continu
 
 prophecyContinueBtn.addEventListener('click', () => {
   pageProphecy.classList.remove('active');
-  pageProphecyVideo.classList.add('active');
-  prophecyVideo.play();
-  if (prophecyVideo.requestFullscreen) {
-    prophecyVideo.requestFullscreen().catch(() => {});
-  }
+  pageAttack.classList.add('active');
 });
 
 function revealProphecyVideoContinue() {
@@ -391,7 +438,7 @@ prophecyVideoBackBtn.addEventListener('click', () => {
   if (document.fullscreenElement) document.exitFullscreen();
   prophecyVideo.pause();
   pageProphecyVideo.classList.remove('active');
-  pageProphecy.classList.add('active');
+  pageSix.classList.add('active');
 });
 
 document.addEventListener('fullscreenchange', () => {
@@ -403,7 +450,7 @@ document.addEventListener('fullscreenchange', () => {
 
 prophecyVideoContinueBtn.addEventListener('click', () => {
   pageProphecyVideo.classList.remove('active');
-  pageAttack.classList.add('active');
+  pageProphecy.classList.add('active');
 });
 
 attackBackBtn.addEventListener('click', () => {

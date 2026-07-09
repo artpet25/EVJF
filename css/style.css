@@ -412,6 +412,27 @@ main .btn-start {
   border: 3px double var(--gold);
   border-radius: 10px;
   margin: 1rem 0;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-drag: none;
+  cursor: grab;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  will-change: transform;
+}
+
+.tinder-photo.dragging {
+  transition: none;
+  cursor: grabbing;
+}
+
+.tinder-photo.swipe-out-left {
+  transform: translateX(-130%) rotate(-20deg);
+  opacity: 0;
+}
+
+.tinder-photo.swipe-out-right {
+  transform: translateX(130%) rotate(20deg);
+  opacity: 0;
 }
 
 .ending-photo {
