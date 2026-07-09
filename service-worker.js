@@ -1,4 +1,4 @@
-const CACHE_NAME = 'evjf-v4';
+const CACHE_NAME = 'evjf-v5';
 
 const PRECACHE_ASSETS = [
   '/EVJF/',
@@ -27,6 +27,7 @@ const PRECACHE_ASSETS = [
   '/EVJF/photos/photo-5.jpeg',
   '/EVJF/photos/photo-6.jpeg',
   '/EVJF/photos/tapestry-1.jpeg',
+  '/EVJF/photos/ending.jpeg',
   '/EVJF/videos/video-1.mp4',
   '/EVJF/videos/video-2.mp4',
   '/EVJF/videos/video-3.mp4',
